@@ -319,8 +319,9 @@ pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,pycharm,python,venv
 
-__pycache__/
+__pycache__*
 .env
 env.*
 samconfig.*
 .DS_Store
+*.py[cod]

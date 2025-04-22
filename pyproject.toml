@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ai-agent-developer-tech-test"
+version = "0.1.0"
+description = "This project is a technical test"
+authors = ["Julio Cabrera <jcabrerahi@gmail.com>"]
+license = "Apache 2.0"
+readme = "README.md"
+# packages = [{ include = "src", from = "." }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = {extras = ["openai"], version = "^0.3.24"}
+langgraph = "^0.3.31"
+langchain-core = "^0.3.55"
+pydantic = "^2.11.3"
+python-dotenv = "^1.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
