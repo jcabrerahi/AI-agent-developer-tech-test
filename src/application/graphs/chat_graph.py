@@ -1,10 +1,11 @@
-from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
-from langgraph.graph import START, END, StateGraph
 
-from src.domain.models.chat_state import ChatState
+from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.graph import END, START, StateGraph
+
 from src.application.nodes.chat_nodes import chat_node
 from src.application.nodes.rag_nodes import retrieve_documents_node
+from src.domain.models.chat_state import ChatState
 
 conn = sqlite3.connect("checkpoints.sqlite", check_same_thread=False)
 memory = SqliteSaver(conn)
@@ -22,10 +23,9 @@ workflow.add_edge("chat_qa", END)
 
 chat_graph = workflow.compile(checkpointer=memory)
 
-try:    
-    print("Langraph tax policies graph:")
-    # print(chat_graph.get_graph().draw_mermaid()) 
+try:
+    pass
+    # print(chat_graph.get_graph().draw_mermaid())
     # print(chat_graph.get_graph(xray=True).draw_ascii())
 except:
-    print("Could not draw graph")
-    
+    pass

@@ -1,10 +1,12 @@
-from pydantic import BaseModel, Field
-from langchain_core.tools import BaseTool
-from langchain_core.prompts import PromptTemplate
-from src.application.prompts.chat_prompts import chat_prompt
 from langchain_core.callbacks import AsyncCallbackManagerForToolRun, CallbackManagerForToolRun
-from src.infrastructure.llm.openai_wrapper import ChatOpenAIWrapper
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import PromptTemplate
+from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
+
+from src.application.prompts.chat_prompts import chat_prompt
+from src.infrastructure.llm.openai_wrapper import ChatOpenAIWrapper
+
 
 class ChatQAToolInput(BaseModel):
     context: str = Field(..., description="The context to answer the question")
@@ -16,8 +18,8 @@ class ChatQATool(BaseTool):
     name: str = "ChatQATool"
     description: str = "Useful to answer user inputs"
     args_schema: type[BaseModel] = ChatQAToolInput
-    return_direct: bool = True 
-    api_wrapper: ChatOpenAIWrapper = Field(default_factory=ChatOpenAIWrapper)   
+    return_direct: bool = True
+    api_wrapper: ChatOpenAIWrapper = Field(default_factory=ChatOpenAIWrapper)
 
     def _run(
         self,
@@ -31,7 +33,7 @@ class ChatQATool(BaseTool):
         prompt = PromptTemplate(
             template=chat_prompt,
             input_variables=["context", "question", "messages"],
-        )                
+        )
         return self.api_wrapper.get_response(
             prompt=prompt,
             input_values={
@@ -56,4 +58,3 @@ class ChatQATool(BaseTool):
             messages=messages,
             run_manager=run_manager.get_sync(),
         )
-        

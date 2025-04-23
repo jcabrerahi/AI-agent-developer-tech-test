@@ -1,8 +1,8 @@
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import BaseOutputParser
-from pydantic import BaseModel, SecretStr, model_validator, ConfigDict
 from langchain_core.utils import get_from_dict_or_env
 from langchain_openai import ChatOpenAI
+from pydantic import BaseModel, ConfigDict, SecretStr, model_validator
 
 
 class ChatOpenAIWrapper(BaseModel):
@@ -32,4 +32,3 @@ class ChatOpenAIWrapper(BaseModel):
         )
         chain = prompt | model | parser
         return chain.invoke(input_values)
-    
