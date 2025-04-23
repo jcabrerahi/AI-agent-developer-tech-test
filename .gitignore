@@ -325,3 +325,4 @@ env.*
 samconfig.*
 .DS_Store
 *.py[cod]
+.trae

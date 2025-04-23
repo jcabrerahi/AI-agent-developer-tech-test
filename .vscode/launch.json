@@ -19,6 +19,14 @@
             "module": "tests.unit.test_graphs",
             "justMyCode": false,
             "stopOnEntry": false
-        }        
+        },
+        {
+            "name": "Run ingest vectorStore",
+            "type": "python",
+            "request": "launch",
+            "module": "src.setup.ingest_vectorstore",
+            "justMyCode": false,
+            "stopOnEntry": false
+        }       
     ]
 }
