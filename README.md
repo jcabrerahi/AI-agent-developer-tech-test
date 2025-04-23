@@ -1,7 +1,8 @@
 
 # AI-agent-developer-tech-test
 
-This project is a technical test that implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable.
+## Short Summary
+This project is a technical test that implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable by using test and linters.
 
 ## Implementation Demonstrations
 In the following image, the chatbot is interacted with to ask for tax information, the chatbot is closed, and then reopened. The chatbot remembers the context from the previous conversation.
@@ -19,6 +20,20 @@ In the next image, another example of interaction with the chatbot.
 - **OpenAI**: Integration with advanced language models
 - **Pydantic**: Data validation and schemas
 - **Python**: Base programming language
+
+## What Could Be Improved with More Time
+
+1. **Refining the Graph**: Introduce a "router" node to decide whether the user's input should be responded to directly or go through the RAG process first, improving efficiency.
+
+2. **Scalability and Deployment**: Prepare the application for deployment in scalable cloud environments (AWS, GCP), using Docker and Kubernetes. Consider using AWS Lambda or FastAPI for API endpoints.
+
+3. **Contextual Learning**: Implement a more advanced memory system, such as MemoryDB, to allow the chatbot to learn and improve its responses over time.
+
+4. **Expanded Testing**: Increase test coverage to include edge cases, error handling, and integration tests, ensuring robustness.
+
+5. **Better Error Handling**: Improve fault tolerance with more granular error handling, especially when interacting with external services like OpenAI or ChromaDB.
+
+
 
 ## Project Structure
 The project follows Clean Architecture and a hybrid of Hexagonal Architecture, which helps the code evolve easily. The directory structure is as follows:
@@ -138,7 +153,7 @@ This flow allows:
 3. Generating contextualized responses
 4. Finalizing the process
 
-## Getting Started (Setup project)
+## Getting Started (Setup instructions)
 To run this project, follow these detailed steps:
 
 ### 1. Clone the repository
