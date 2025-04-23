@@ -9,7 +9,7 @@ from langchain_core.output_parsers import StrOutputParser
 class ChatQAToolInput(BaseModel):
     context: str = Field(..., description="The context to answer the question")
     question: str = Field(..., description="The question to answer")
-    messages: list = Field(..., description="The historic chat")
+    messages: str = Field(..., description="The historic chat")
 
 
 class ChatQATool(BaseTool):
@@ -23,7 +23,7 @@ class ChatQATool(BaseTool):
         self,
         context: str,
         question: str,
-        messages: list,
+        messages: str,
         run_manager: CallbackManagerForToolRun | None = None,
     ) -> str:
         """Use the tool."""
@@ -47,7 +47,7 @@ class ChatQATool(BaseTool):
         self,
         context: str,
         question: str,
-        messages: list[tuple[str, str]] = None,
+        messages: str,
         run_manager: AsyncCallbackManagerForToolRun | None = None,
     ) -> str:
         """Use the tool asynchronously."""
