@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
+from pathlib import Path
 from typing import Any
 
 from langchain_core.documents import Document
@@ -23,23 +24,24 @@ class VectorSearchService:
         return self.repository.similarity_search(query, k=k)
 
     def search_documents_with_score(
-        self, query: str, k: int = 3, filter: dict[str, Any] | None = None
+        self, query: str, k: int = 3, filters: dict[str, Any] | None = None
     ) -> list[tuple[Document, float]]:
         """Search for documents similar to the query and return the score."""
-        return self.repository.similarity_search_with_score(query, k=k, filter=filter)
+        return self.repository.similarity_search_with_score(query, k=k, filters=filters)
 
 
 def create_vector_search_service() -> VectorSearchService:
     """Initialize and return the vector search service."""
-    # Simplified directory access
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
-    persist_dir = os.path.join(base_dir, "data", "chroma_db_2")
+
+    base_dir = Path(__file__).resolve().parent.parent.parent
+    persist_dir = base_dir / "data" / "chroma_db_2"
+
+    persist_dir_str = str(persist_dir)
 
     embedding_model = os.getenv("EMBEDDING_MODEL")
 
-    # Initialize Chroma repository with OpenAI embeddings
     repository = ChromaRepository(
-        persist_directory=persist_dir,
+        persist_directory=persist_dir_str,
         collection_name="tax_policies",
         embedding_function=OpenAIEmbeddings(model=embedding_model, dimensions=512, max_retries=2, request_timeout=4),
     )

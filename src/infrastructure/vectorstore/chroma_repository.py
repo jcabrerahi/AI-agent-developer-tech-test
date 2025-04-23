@@ -14,10 +14,15 @@ class ChromaRepository(VectorDBRepository):
         self,
         persist_directory: str = "./chroma_db",
         collection_name: str = "tax_policies",
-        embedding_function: OpenAIEmbeddings = OpenAIEmbeddings(),
+        embedding_function: OpenAIEmbeddings = None,
     ):
         self.persist_directory = persist_directory
         self.collection_name = collection_name
+
+        if embedding_function is None:
+            embedding_function = OpenAIEmbeddings(
+                model="text-embedding-3-small", dimensions=512, max_retries=2, request_timeout=4
+            )
         self.embedding_function = embedding_function
 
     def _get_db(self) -> Chroma:
@@ -34,11 +39,18 @@ class ChromaRepository(VectorDBRepository):
         return db.similarity_search(query, k=k)
 
     def similarity_search_with_score(
-        self, query: str, k: int = 3, filter: dict[str, Any] | None = None
+        self,
+        query: str,
+        k: int = 3,
+        filters: dict[str, Any] | None = None
     ) -> list[tuple[Document, float]]:
         """Search for documents similar to the query and return the score."""
         db = self._get_db()
-        return db.similarity_search_with_score(query, k=k, filter=filter)
+
+        # Cambiar el parámetro 'filters' por 'where' si filters no es None
+        if filters:
+            return db.similarity_search_with_score(query, k=k, filter=filters)
+        return db.similarity_search_with_score(query, k=k)
 
     def store_documents(self, documents: list[Document], persist_directory: str, collection_name: str) -> None:
         """Store documents in the vector database."""

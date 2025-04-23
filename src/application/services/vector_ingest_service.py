@@ -1,6 +1,6 @@
 import csv
-import os
 import shutil
+from pathlib import Path
 
 from langchain_core.documents import Document
 
@@ -17,14 +17,13 @@ class VectorIngestService:
         self, csv_path: str, persist_directory: str = "./chroma_db", collection_name: str = "tax_policies"
     ) -> None:
         """Ingest data from CSV file into vector database."""
-        if os.path.exists(persist_directory):
+        if Path(persist_directory).exists():
             # ask if want to remove and recreate
             user_input = input(
                 f"\n\nVector database already exists at {persist_directory}. Do you want to delete and recreate? (y/n) "
             )
             if user_input.lower() == "y":
                 shutil.rmtree(persist_directory)
-
 
                 documents = self._create_documents_from_csv(csv_path)
 
@@ -33,7 +32,7 @@ class VectorIngestService:
     def _create_documents_from_csv(self, csv_path: str) -> list[Document]:
         """Create documents from CSV file."""
         documents = []
-        with open(csv_path, encoding="utf-8") as f:
+        with Path(csv_path).open(encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 content = (

@@ -13,7 +13,7 @@ class VectorDBRepository(ABC):
 
     @abstractmethod
     def similarity_search_with_score(
-        self, query: str, k: int = 3, filter: dict[str, Any] | None = None
+        self, query: str, k: int = 3, filters: dict[str, Any] | None = None
     ) -> list[tuple[Document, float]]:
         """Search for documents similar to the query and return the score."""
 
