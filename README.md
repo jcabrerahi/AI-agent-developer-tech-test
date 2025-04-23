@@ -1,24 +1,26 @@
-# AI-agent-developer-tech-test
-Este proyecto es una prueba técnica que implementa un agente de chat con capacidades de RAG (Retrieval Augmented Generation) utilizando tecnologías modernas de procesamiento de lenguaje natural. The project follows a Clean Architecture and a hybrid Hexagonal Architecture, ensuring that the code is easily scalable and maintainable.
 
-## Ejemplos de implementación
-En la siguiente imagen se interactua con el chatbot preguntando inforamción de impuestos se cierra el chatbot y se vuelve a iniciar. Notando que el chatbot recuerda el contexto de la conversación anterior.
+# AI-agent-developer-tech-test
+
+This project is a technical test that implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable.
+
+## Implementation Demonstrations
+In the following image, the chatbot is interacted with to ask for tax information, the chatbot is closed, and then reopened. The chatbot remembers the context from the previous conversation.
 <img src="static/interaction_long_term_memory.jpg" alt="Chat Graph" width="1000"/>
 
-Y en la siguiente imagen otro ejemplo de la interacción con el chatbot.
+In the next image, another example of interaction with the chatbot.
 <img src="static/interaction_taxes.jpg" alt="Chat Graph" width="400"/>
 
+## Technologies Used
+- **LangChain**: Framework for building applications with LLMs
+- **LangGraph**: Library for creating workflows with LLMs
+- **ChromaDB**: Vector database for local embedding storage
+- **SQLite**: Relational database for chat message persistence
+- **Rich**: Library for enhanced CLI interfaces
+- **OpenAI**: Integration with advanced language models
+- **Pydantic**: Data validation and schemas
+- **Python**: Base programming language
 
-## Tecnologías Utilizadas
-- LangChain : Framework para desarrollo de aplicaciones con LLMs
-- LangGraph : Biblioteca para crear flujos de trabajo con LLMs
-- ChromaDB : Base de datos vectorial para almacenamiento local de embeddings
-- SQLite : Base de datos relacional para persistencia de mensajes del chat
-- Rich : Biblioteca para interfaces CLI mejoradas
-- OpenAI : Integración con modelos de lenguaje avanzados
-- Pydantic : Validación de datos y esquemas
-- Python : Lenguaje de programación base
-## Estructura del Proyecto
+## Project Structure
 The project follows Clean Architecture and a hybrid of Hexagonal Architecture, which helps the code evolve easily. The directory structure is as follows:
 ```plaintext
 AI-agent-developer-tech-test/
@@ -46,8 +48,10 @@ AI-agent-developer-tech-test/
 │   │   ├── prompts/             # Prompt templates for the chatbot
 │   │   │   └── chat_prompts.py
 │   │   └── services/            # Application services
-│   │       ├── vector_ingest_service.py  # Service for ingesting documents into the vector database
-│   │       └── vector_search_service.py  # Service for searching relevant documents in the vector database
+│   │   │   ├── vector_ingest_service.py  # Service for ingesting documents into the vector database
+│   │   │   └── vector_search_service.py  # Service for searching relevant documents in the vector database
+│   │   └── use_cases/           # Application use cases
+│   │       └── call_graph.py    # Use case for interacting with the chatbot
 │   ├── core/
 │   │   ├── __init__.py          # Initializes the `core` package
 │   │   ├── logging.py           # Logging configuration
@@ -85,51 +89,54 @@ AI-agent-developer-tech-test/
         └── test_graphs.py      # Unit and integration tests for test the created langgraphs
  ```
 
+## Main Features
+### RAG with ChromaDB
+The system implements a **Retrieval Augmented Generation (RAG)** mechanism using ChromaDB as a local vector database. This enables:
 
-## Características Principales
-### RAG con ChromaDB
-El sistema implementa un mecanismo de RAG (Retrieval Augmented Generation) utilizando ChromaDB como base de datos vectorial local. Esto permite:
+- Efficient storage of embeddings
+- Semantic search of relevant documents
+- Context retrieval to improve LLM responses
 
-- Almacenamiento eficiente de embeddings
-- Búsqueda semántica de documentos relevantes
-- Recuperación de contexto para mejorar las respuestas del LLM
-### Memoria Persistente con SQLite
-La aplicación utiliza SQLite para proporcionar persistencia de mensajes a largo plazo, permitiendo:
+### Persistent Memory with SQLite
+The application uses **SQLite** for long-term message persistence, allowing:
 
-- Almacenamiento de conversaciones completas
-- Recuperación del historial de chat
-- Contexto conversacional entre sesiones
-### Flujo de Trabajo con LangGraph
-El sistema implementa un flujo de trabajo usando LangGraph que consta de los siguientes nodos:
+- Storage of full conversations
+- Retrieval of chat history
+- Contextual conversation between sessions
 
-1. __start__ : Punto de entrada al grafo
-2. retrieve_rag : Recupera documentos relevantes basados en la consulta del usuario
-3. chat_qa : Genera respuestas utilizando el contexto recuperado
-4. __end__ : Punto de salida del grafo
-### Herramientas Personalizadas
-El proyecto utiliza herramientas personalizadas creadas mediante la subclase BaseTool de LangChain, lo que proporciona:
+### Workflow with LangGraph
+The system implements a workflow using **LangGraph**, consisting of the following nodes:
 
-- Mayor versatilidad en la implementación
-- Integración fluida con el ecosistema LangChain
-- Capacidad para extender funcionalidades fácilmente
+1. **__start__**: Entry point into the graph
+2. **retrieve_rag**: Retrieves relevant documents based on the user's query
+3. **chat_qa**: Generates responses using the retrieved context
+4. **__end__**: Exit point of the graph
 
-### Interfaz CLI con Rich
-La aplicación utiliza Rich para crear una interfaz de línea de comandos mejorada con:
+### Custom Tools
+The project uses custom tools created through LangChain’s **BaseTool** subclass, which provides:
 
-- Formato de texto enriquecido
-- Mejor experiencia de usuario en terminal
-- Visualización clara de la información
-## Implementación del Grafo
-El proyecto implementa un grafo de flujo de trabajo utilizando LangGraph, como se muestra en la imagen adjunta:
+- Greater flexibility in implementation
+- Smooth integration with the LangChain ecosystem
+- Easily extendable functionality
+
+### CLI Interface with Rich
+The application uses **Rich** to create an enhanced command-line interface with:
+
+- Rich text formatting
+- Improved user experience in the terminal
+- Clear information display
+
+## Graph Implementation
+The project implements a workflow graph using LangGraph, as shown in the image below:
 
 <img src="static/chat_graph.jpg" alt="Chat Graph" width="200"/>
 
-Este flujo permite:
+This flow allows:
 
-1. Iniciar la conversación
-2. Recuperar documentos relevantes basados en la consulta del usuario
-3. Generar respuestas contextualizadas
-4. Finalizar el proceso
+1. Starting the conversation
+2. Retrieving relevant documents based on the user's query
+3. Generating contextualized responses
+4. Finalizing the process
 
 ## Getting Started (Setup project)
 To run this project, follow these detailed steps:
@@ -141,74 +148,90 @@ First, clone the repository to your local machine:
 git clone https://github.com/your_username/ai-agent-developer-tech-test.git
 cd ai-agent-developer-tech-test
 ```
-### 2. Install dependencies with Poetry
-This project uses Poetry for dependency management. If you don't have Poetry installed, you can do so by running the following command:
 
-Install Poetry:
-If you don't have Poetry installed, you can install it by running:
+### 2. Install dependencies with Poetry
+This project uses **Poetry** for dependency management. If you don't have **Poetry** installed, you can install it by running:
+
+Install **Poetry**:
+If you don't have **Poetry** installed, you can install it by running:
 
 ```
 curl -sSL https://install.python-poetry.org | python3 -
 ```
-Once Poetry is installed, navigate to the project folder and run:
+
+Once **Poetry** is installed, navigate to the project folder and run:
 
 ```
 poetry install
 ```
-This will install all the necessary dependencies defined in the pyproject.toml file.
+
+This will install all the necessary dependencies defined in the `pyproject.toml` file.
 
 ### 3. Configure environment variables
-The project requires some environment variables to work correctly, especially those related to OpenAI integration.
+The project requires some environment variables to work correctly, especially those related to **OpenAI** integration.
 
-Create a .env file in the root of the project and add the following variables:
+If not exist create a `.env` file in the root of the project and add the following variables:
+
+> [!IMPORTANT]  
+> Be sure to replace `your_openai_api_key` with your actual OPENAI_API_KEY.
 
 ```
-OPENAI_API_KEY=your_openai_api_key
-EMBEDDING_MODEL=text-embedding-ada-002  # or the model you're using
+OPENAI_API_KEY=
+LLM_MODEL_NAME=gpt-4.1-nano
+EMBEDDING_MODEL=text-embedding-3-small
 ```
-Be sure to replace your_openai_api_key with your actual OpenAI API key.
 
 ### 4. Activate the virtual environment with Poetry
-To activate the virtual environment managed by Poetry, run:
+To activate the virtual environment managed by **Poetry**, run:
 
 ```
 poetry shell
 ```
+
 This will activate the virtual environment, and you can run the project commands within this isolated environment.
 
 ### 5. Running the application
 Once the virtual environment is activated, you can run the application using the following command:
-
-```
-python -m src.application
-```
-This will start the application, and you can interact with the chatbot.
-
-### 6. Running Tests (Optional)
-To run the tests, use the Makefile commands. This will execute the tests defined in the tests/ folder:
-
 ```
 make run
 ```
 This will execute the following command:
+```
+python -m src.application.use_cases.call_graph
+```
+
+This will start the application, and you can interact with the chatbot.
+
+### 6. Running Tests (Optional)
+To run the tests, use the **Makefile** commands. This will execute the tests defined in the `tests/` folder:
 
 ```
-python -m tests.unit.test_graphs
+make test
 ```
+
+This will execute the following command:
+
+```
+poetry run pytest tests/integration/test_graphs.py
+```
+
 ### 7. Populate the vector store (Optional)
-If you'd like to recreate the vector store (which is already included in the repository), you can use the following command from the Makefile to populate it:
+If you'd like to recreate the vector store (which is already included in the repository), you can use the following command from the **Makefile** to populate it:
+
 ```
 make populate_vector_store
 ```
+
 This will execute the following command:
 
 ```
 python -m src.setup.ingest_vectorstore
 ```
-However, note that the vector store already exists in the repository as data/chroma_db_2, so this step is not necessary unless you want to recreate it.
 
-## Contribuciones
-Este proyecto es una prueba técnica y no está abierto a contribuciones externas.
+However, note that the vector store already exists in the repository as `data/chroma_db_2`, so this step is not necessary unless you want to recreate it.
 
-## Licencia
-Derechos reservados.
+## Contributions
+This project is a technical test and is not open for external contributions.
+
+## License
+This project is licensed under the Apache License 2.0. See the [LICENSE FILE](./LICENSE) file for more details.

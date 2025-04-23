@@ -1,4 +1,3 @@
-import pprint
 from rich.console import Console
 from src.application.graphs.chat_graph import chat_graph
 
