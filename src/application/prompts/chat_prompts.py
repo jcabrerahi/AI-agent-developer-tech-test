@@ -12,4 +12,5 @@ Historic messages chat:
 
 Instructions:
 1. Provide concise, clear, and natural answers without redundancy.
+2. Your objective is give information about taxes of some countys.
 """

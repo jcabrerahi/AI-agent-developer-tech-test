@@ -6,7 +6,7 @@ def chat_session():
     # Initialize the console for rich text output
     console = Console()
     
-    config = {"configurable": {"thread_id": "123"}}
+    config = {"configurable": {"thread_id": "test123"}}
     
     console.print("\n===== Local Tax Policies Chatbot =====", style="bold green")
     console.print("Type 'exit' or 'q' to end the conversation\n", style="italic yellow")

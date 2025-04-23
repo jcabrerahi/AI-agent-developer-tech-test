@@ -8,7 +8,7 @@ def retrieve_documents_node(state: ChatState) -> ChatState:
     state["question"] = query
         
     search_service = create_vector_search_service()            
-    results = search_service.search_documents_with_score(query.content, k=3)
+    results = search_service.search_documents_with_score(query.content, k=5)
         
     context_parts = []
     
