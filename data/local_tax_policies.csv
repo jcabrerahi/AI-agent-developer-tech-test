@@ -1,0 +1,26 @@
+county,state,property_tax_rate,sales_tax,income_tax_local,notes
+Travis,TX,1.9,8.25,0.0,No local income tax
+Orange,CA,1.1,7.75,1.2,Local surcharge for schools
+Cook,IL,2.3,10.25,0.0,Includes Chicago city surcharge
+Los Angeles,CA,1.2,9.5,1.0,City and county combined sales tax
+Maricopa,AZ,0.8,8.6,0.0,No local income tax
+Harris,TX,2.1,8.25,0.0,"Houston area, no local income tax"
+Kings,NY,1.6,8.875,3.876,Includes NYC income tax
+Miami-Dade,FL,1.1,7.0,0.0,No local income tax
+Clark,NV,0.7,8.375,0.0,"Las Vegas, no income tax at all"
+Fulton,GA,1.4,8.9,1.0,Includes Atlanta city surcharges
+Bexar,TX,2.0,8.25,0.0,"San Antonio area, no local income tax"
+San Diego,CA,1.2,7.75,1.1,Local sales and income tax adjustments
+Dallas,TX,2.2,8.25,0.0,No local income tax
+Queens,NY,1.5,8.875,3.876,"Part of NYC, local income tax applies"
+King,WA,1.0,10.1,0.0,"Seattle area, no local income tax"
+Bronx,NY,1.6,8.875,3.876,NYC income tax applies
+Tarrant,TX,2.0,8.25,0.0,"Fort Worth area, no local income tax"
+Santa Clara,CA,1.1,9.125,1.0,"Includes San Jose, local tech taxes"
+Alameda,CA,1.3,10.25,1.2,"Oakland area, high sales tax"
+Suffolk,MA,1.2,6.25,0.0,"Boston area, state income tax only"
+Salt Lake,UT,1.0,7.75,0.0,No local income tax
+Shelby,TN,1.5,9.75,0.0,"Memphis, no local income tax"
+Franklin,OH,1.3,7.5,2.5,Columbus area has local income tax
+Wayne,MI,1.8,6.0,2.4,Detroit imposes city income tax
+Hennepin,MN,1.2,7.525,0.0,"Minneapolis area, no local income tax"
