@@ -105,6 +105,10 @@ AI-agent-developer-tech-test/
  ```
 
 ## Main Features
+
+### Used dataset
+The project uses a sample dataset of local tax policies, which is located in the [data/local_tax_policies.csv](./data/local_tax_policies.csv)
+
 ### RAG with ChromaDB
 The system implements a **Retrieval Augmented Generation (RAG)** mechanism using ChromaDB as a local vector database. This enables:
 
