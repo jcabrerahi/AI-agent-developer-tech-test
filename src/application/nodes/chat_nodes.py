@@ -1,5 +1,5 @@
 from src.domain.models.chat_state import ChatState
-from src.application.tools.chat_qa_tool import ChatQATool
+from src.infrastructure.tools.chat_qa_tool import ChatQATool
 
 
 def chat_node(state: ChatState) -> ChatState:
