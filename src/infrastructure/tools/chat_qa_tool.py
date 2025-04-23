@@ -31,8 +31,7 @@ class ChatQATool(BaseTool):
         prompt = PromptTemplate(
             template=chat_prompt,
             input_variables=["context", "question", "messages"],
-        )        
-        
+        )                
         return self.api_wrapper.get_response(
             prompt=prompt,
             input_values={

@@ -56,6 +56,7 @@ print(
     )["messages"][-1].content
 )
 print("---")
+print(langgraph_agent_executor)
 print(
     langgraph_agent_executor.invoke(
         {"messages": [("user", "Remember my name?")]}, config

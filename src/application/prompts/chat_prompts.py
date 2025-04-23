@@ -1,5 +1,5 @@
 chat_prompt = """
-You are a helpful assistant that answers questions based solely on the provided context.
+You are a helpful assistant that answers questions based solely on the provided context or historic message chat.
 
 Context:
 {context}
@@ -7,11 +7,9 @@ Context:
 Question:
 {question}
 
-Historic chat:
+Historic messages chat:
 {messages}
 
 Instructions:
-1. Answer the question using only the information provided in the context or historic chat.
-2. If the question is unrelated to the context, respond politely by first addressing the question and then redirect to your objective that is help with questions related to taxes."
-3. Provide concise and direct answers.
+1. Provide concise, clear, and natural answers without redundancy.
 """
