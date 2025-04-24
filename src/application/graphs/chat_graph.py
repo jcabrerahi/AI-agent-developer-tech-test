@@ -8,8 +8,9 @@ from src.application.nodes.rag_nodes import retrieve_documents_node
 from src.core.logging import logger
 from src.domain.models.chat_state import ChatState
 
-conn = sqlite3.connect("checkpoints.sqlite", check_same_thread=False)
-memory = SqliteSaver(conn)
+# Eliminar estas líneas
+# conn = sqlite3.connect("checkpoints.sqlite", check_same_thread=False)
+# memory = SqliteSaver(conn)
 
 workflow = StateGraph(ChatState)
 
@@ -22,7 +23,8 @@ workflow.add_edge(START, "retrieve_rag")
 workflow.add_edge("retrieve_rag", "chat_qa")
 workflow.add_edge("chat_qa", END)
 
-chat_graph = workflow.compile(checkpointer=memory)
+# Eliminar el parámetro checkpointer
+chat_graph = workflow.compile()
 
 try:
     logger.info("Generating graph...")

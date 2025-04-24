@@ -4,6 +4,9 @@ run:
 test:
 	poetry run pytest tests/integration/test_graphs.py
 
+test_rag:
+	poetry run pytest tests/unit/test_vector_search.py
+
 populate_vector_store:
 	python -m src.setup.ingest_vectorstore
 
