@@ -16,7 +16,7 @@
             "name": "Run test graph",
             "type": "python",
             "request": "launch",
-            "module": "tests.unit.test_graphs",
+            "module": "src.application.use_cases.call_graph",
             "justMyCode": false,
             "stopOnEntry": false
         },
