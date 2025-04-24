@@ -33,7 +33,7 @@ class VectorSearchService:
 def create_vector_search_service() -> VectorSearchService:
     """Initialize and return the vector search service."""
 
-    base_dir = Path(__file__).resolve().parent.parent.parent
+    base_dir = Path(__file__).resolve().parent.parent.parent.parent
     persist_dir = base_dir / "data" / "chroma_db_2"
 
     persist_dir_str = str(persist_dir)
