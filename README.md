@@ -5,15 +5,19 @@
 This project is a technical test that implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable by using test and linters.
 
 ## Implementation Demonstrations
-In the following image, the chatbot is interacted with to ask for tax information, the chatbot is closed, and then reopened. The chatbot remembers the context from the previous conversation.
+In the following image, the chatbot is interacted with CLI to ask for tax information, the chatbot is closed, and then reopened. The chatbot remembers the context from the previous conversation.
 <img src="static/interaction_long_term_memory.jpg" alt="Chat Graph" width="1000"/>
 
-In the next image, another example of interaction with the chatbot.
-<img src="static/interaction_taxes.jpg" alt="Chat Graph" width="400"/>
+In the next image, you can see the interaction into Langraph Studio working with graph.
+<img src="static/langraph_studio.jpg" alt="Chat Graph" width="800"/>
+
+In the next image, you can see the interaction into Langraph Studio through the chat.
+<img src="static/langraph_studio_chat.jpg" alt="Chat Graph" width="800"/>
 
 ## Technologies Used
 - **LangChain**: Framework for building applications with LLMs
 - **LangGraph**: Library for creating workflows with LLMs
+- **LangGraph Studio**: Graphical interface for LangGraph
 - **ChromaDB**: Vector database for local embedding storage
 - **SQLite**: Relational database for chat message persistence
 - **Rich**: Library for enhanced CLI interfaces
