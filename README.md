@@ -1,8 +1,8 @@
 
-# AI-agent-developer-tech-test
+# AI Agent Developer
 
 ## Short Summary
-This project is a technical test that implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable by using test and linters.
+This project implements a chatbot with **Retrieval Augmented Generation (RAG)** capabilities using modern natural language processing technologies, it also have Long Term **Memory**. The project follows **Clean Architecture** and a **hybrid Hexagonal Architecture**, ensuring that the code is easily scalable and maintainable by using test and linters.
 
 ## Implementation Demonstrations
 In the following image, the chatbot is interacted with CLI to ask for tax information, the chatbot is closed, and then reopened. The chatbot remembers the context from the previous conversation.
@@ -42,7 +42,7 @@ In the next image, you can see the interaction into Langraph Studio through the 
 ## Project Structure
 The project follows Clean Architecture and a hybrid of Hexagonal Architecture, which helps the code evolve easily. The directory structure is as follows:
 ```plaintext
-AI-agent-developer-tech-test/
+AI-agent-developer/
 ├── LICENSE                      # License file for the project
 ├── Makefile                     # Automates common project tasks
 ├── README.md                    # Project documentation
@@ -168,8 +168,8 @@ To run this project, follow these detailed steps:
 First, clone the repository to your local machine:
 
 ```
-git clone https://github.com/your_username/ai-agent-developer-tech-test.git
-cd ai-agent-developer-tech-test
+git clone https://github.com/your_username/ai-agent-developer.git
+cd ai-agent-developer
 ```
 
 ### 2. Install dependencies with Poetry
@@ -254,7 +254,7 @@ python -m src.setup.ingest_vectorstore
 However, note that the vector store already exists in the repository as `data/chroma_db_2`, so this step is not necessary unless you want to recreate it.
 
 ## Contributions
-This project is a technical test and is not open for external contributions.
+This project is not open for external contributions.
 
 ## License
 This project is licensed under the Apache License 2.0. See the [LICENSE FILE](./LICENSE) file for more details.
